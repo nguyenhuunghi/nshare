@@ -1,0 +1,13 @@
+<ng-include src="'partials/menu.html'"></ng-include>
+<div id="container" class="container">
+    <div class="blog-post-label">Blog Post</div>
+    <div class="post-wrapper">
+        <div ng-repeat="blogPost in blogList">
+            <div class="blog-post-outer">
+                <div class="blog-intro-text">Posted: {{ blogPost.date | date:'dd/MM/yyyy @ h:mm' }}</div>
+                <div class="blog-intro-text">blogPost.introText</div>
+                <div class="blog-read-more"><a href="#!blogPost/{{blogPost.id}}">Read more</a></div>
+            </div>
+        </div>
+    </div>
+</div>
