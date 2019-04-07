@@ -4,13 +4,13 @@
     <div class="blog-entry-wrapper">
         <div class="blog-intro-text">Posted: {{ blogEntry.date | date:'dd/MM/yyyy @ h:mm' }}</div>
         <div class="blog-entry-outer">
-            <div class="blog-intro-text">{{ blogEntry.blogText }}</div>
+            <div class="blog-intro-text">{{ blogEntry.blog_text }}</div>
         </div>
         <div class="blog-comment-wrapper">
             <div class="blog-comment-label">Blog Comments</div>
             <div class="blog-entry-comment" ng-repeat="comment in blogEntry.comments">
-                {{ comment.commentText }}
-                {{ comment.time | date: 'dd/MM/yyyy @ h:mm' }}
+                {{ comment.comment_text }}
+                {{ comment.date | date: 'dd/MM/yyyy @ h:mm' }}
             </div>
         </div>
     </div>

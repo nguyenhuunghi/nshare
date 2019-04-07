@@ -1,13 +1,14 @@
 'use strict'
 var blogApp = angular.module('blogApp', [
   'ngRoute',
-  'blogControllers'
+  'blogControllers',
+  'blogServices'
 ]);
 
 blogApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      'templateUrl': '/partials/blog/main.html',
+      'templateUrl': '/partials/blog/blog.html',
       'controller': 'blogCtrl'
     })
     .when('/blogPost/:id', {
