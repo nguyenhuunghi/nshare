@@ -1,6 +1,6 @@
 'use strict'
 angular.module('blogApp').run(function ($rootScope, $location, myApi) {
-  myApi.init();
+  $rootScope.base_url = 'https://phones-store-api.herokuapp.com/';
   var cid = '';
   $rootScope.make_listing = function (url, field) {
     myApi.get(url).then(function (response) {
