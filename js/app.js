@@ -1,11 +1,10 @@
 'use strict'
-var blogApp = angular.module('blogApp', [
+angular.module('blogApp', [
   'ngRoute',
   'blogControllers',
   'blogServices'
-]);
-
-blogApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+])
+.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       'templateUrl': '/partials/blog/blog.html',

@@ -52,7 +52,111 @@ body {
 .blog-entry-wrapper {
   float: left;
   width: 100%;
-  margin: 2% 0 0 0;
+  margin: 1% 0 0 0;
   padding: 0 0 0 0;
 }
 
+.blog-entry-outer {
+  float: left;
+  width: 60%;
+  margin: 2% 0 2% 20%;
+  padding: 1%;
+  background: #e0e0e0;
+  border-radius: 6px;
+  border: darkgreen solid 1px;
+}
+
+.blog-comment-wrapper {
+  float: left;
+  width: 50%;
+  margin: 2% 0 2% 25%;
+  padding: 1%;
+  border-radius: 6px;
+  border: darkgreen solid 1px;
+}
+
+.blog-entry-comment-wrapper {
+  float: left;
+  width: 50%;
+  height: 400px;
+  margin: 2% 0 2% 25%;
+  padding: 1%;
+  overflow: scroll;
+}
+
+.blog-entry-comment {
+  float: left;
+  width: 90%;
+  margin: 2% 0 2% 2%;
+  padding: 1%;
+  background: #f5e79e;
+  border-radius: 6px;
+  border: darkgreen solid 1px;
+}
+ 
+.blog-entry-comment details{
+  float: right;
+}
+
+.blog-entry-comment summary{
+  float: right;
+}
+
+.blog-entry-comment details-menu{
+  float: right;
+}
+
+.blog-entry-comment .update-blog-write-comment {
+  display: none;
+  float: left;
+  width: 100%;
+  margin: 1% 0 0% 0%;
+  padding: 0 0 0 0;
+}
+
+.blog-entry-comment .update-blog-write-comment .update_comment_text {
+  float: left;
+  width: 100%;
+  margin: 1% 0 0% 0%;
+  padding: 1% 1% 1% 1%;
+  border-radius: 6px;
+  border: darkgreen solid 1px;
+}
+
+.blog-entry-comment .update-blog-write-comment .submit {
+  float: right;
+  margin: 1% 0 0% 0%;
+  padding: 1% 1% 1% 1%;
+}
+
+.blog-comment-label {
+  float: left;
+  width: 100%;
+  margin: 1% 0 0% 0%;
+  padding: 0 0 0 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+.blog-write-comment {
+  float: left;
+  width: 100%;
+  margin: 1% 0 0% 0%;
+  padding: 0 0 0 0;
+}
+
+.blog-write-comment .comment_text {
+  float: left;
+  width: 100%;
+  margin: 1% 0 0% 0%;
+  padding: 1% 1% 1% 1%;
+  border-radius: 6px;
+  border: darkgreen solid 1px;
+}
+
+.blog-write-comment .submit {
+  float: right;
+  margin: 1% 0 0% 0%;
+  padding: 1% 1% 1% 1%;
+}
