@@ -145,7 +145,6 @@ body {
   margin: 1% 0 0% 0%;
   padding: 0 0 0 0;
 }
-
 .blog-write-comment .comment_text {
   float: left;
   width: 100%;
@@ -154,9 +153,66 @@ body {
   border-radius: 6px;
   border: darkgreen solid 1px;
 }
-
-.blog-write-comment .submit {
+.blog-write-comment .btn-primary {
   float: right;
-  margin: 1% 0 0% 0%;
-  padding: 1% 1% 1% 1%;
+}
+.blog-write-comment textarea{
+  margin: 0 0 1% 0;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  resize: none;
+}
+.blog-write-comment input{
+  float: left;
+  display: none;
+}
+
+/* Comment */
+.thumbnail {
+  padding:0px;
+}
+.panel {
+  position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+  position:absolute;
+  top:11px;left:-16px;
+  right:100%;
+  width:0;
+  height:0;
+  display:block;
+  content:" ";
+  border-color:transparent;
+  border-style:solid solid outset;
+  pointer-events:none;
+}
+.panel>.panel-heading:after{
+  border-width:7px;
+  border-right-color:#f7f7f7;
+  margin-top:1px;
+  margin-left:2px;
+}
+.panel>.panel-heading:before{
+  border-right-color:#ddd;
+  border-width:8px;
+}
+.panel>.panel-heading .dropdown{
+  height: 34px;
+  margin-bottom: 0px;
+  bottom: 6px;
+  left: 10px;
+  float: right;
+}
+.panel-body .btn-primary, .panel-body .btn-cancel {
+  float: right;
+  margin: 0 5px 0 0;
+}
+.panel-body textarea {
+  margin: 0 0 1% 0;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  resize: none;
+}
+.panel-body input {
+  display: none;
 }

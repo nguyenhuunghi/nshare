@@ -1,38 +1,63 @@
 <ng-include src="'partials/menu.html'"></ng-include>
-<div id="container" class="container">
-    <div class="blog-post-label">Blog Entry</div>
-    <div class="blog-entry-wrapper">
-        <div class="blog-intro-text">Posted: {{ blogEntry.date * 1000 | date:'dd/MM/yyyy @ h:mm' }}</div>
-        <div class="blog-entry-outer">
-            <div class="blog-intro-text">{{ blogEntry.blog_text }}</div>
-        </div>
-        <div class="blog-entry-comment-wrapper" id="blog_entry_comment">
-            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-            <div class="blog-entry-comment" ng-repeat="comment in comments">
-                {{ comment.comment_text }}
-                {{ comment.date * 1000 | date: 'dd/MM/yyyy @ h:mm' }}
-                <img ng-if='comment.assets && comment.assets != null' src="{{ comment.assets[0] }}" style="float: left; width: 200px; height: 200px;">
-                <details class="options_message_{{ comment.id }}">
-                    <summary></summary>
-                    <details-menu>  
-                        <input class="submit" type="button" value="Edit" ng-click="editMessage(comment.id)">
-                        <input class="submit" type="submit" value="Delete" ng-click="delete_comment(comment.id)">
-                    </details-menu>
-                </details>
-                <div class="update-blog-write-comment" id="update_{{ comment.id }}">
-                    <textarea class="update_comment_text" id="comment_text_{{ comment.id }}" placeholder="Leave a comment"></textarea>
-                    <input class="submit" type="submit" name="update_comment_text" value="Cancel" ng-click="cancelComment(comment.id)">
-                    <input class="submit" type="submit" name="update_comment_text" value="Update Comment" ng-click="edit_comment(comment.id)">
+<div id="container" class="container" style="padding-top: 53px;">
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#">Comments<span class="badge">{{ comments.length }}</span></a></li>
+        <li role="presentation"><a href="#">Blog</a></li>
+    </ul>
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <div ng-repeat="comment in comments">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <a href="#" class="thumbnail"><img class="img-responsive user-photo" src="{{ avatar2x }}"></a>
+                    </div>
+                    <!-- contain comment -->
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Username</strong> <span class="text-muted">commented {{ comment.date * 1000 | date: 'dd/MM/yyyy @ h:mm' }}</span>
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="list_option" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="list_option">
+                                        <li><a href="" ng-click="editMessage(comment.id)">Edit</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="" style="color: red;" ng-click="delete_comment(comment.id)">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                {{ comment.comment_text }}
+                                <a href="{{ comment.assets[0] }}" class="thumbnail" ng-if="comment.assets[0] != '' && comment.assets != null"><img class="img-responsive" src="{{ comment.assets }}"></a>
+                                <div class="form_upate_comment hide" id="update_{{ comment.id }}">
+                                    <textarea class="form-control" id="comment_text_{{ comment.id }}" rows="3" placeholder="Leave a comment..."></textarea>
+                                    <button type="button" class="btn btn-default btn-sm" ng-click="upload()"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></button>
+                                    <input type="file" name="asset_comment" id="asset_comment" accept=".jpg, .jpeg, .png">
+                                    <button class="btn btn-primary btn-sm" type="submit" name="comment_text" ng-click="edit_comment(comment.id)">Comment</button>
+                                    <button class="btn btn-default btn-sm btn-cancel" type="submit" ng-click="cancelComment(comment.id)">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- <p ng-if="comments.length < limit" style="text-align: center;">You already updated</p> -->
         </div>
-        <div class="blog-comment-wrapper">
-            <div class="blog-comment-label">Blog Comments</div>
-            <div class="blog-write-comment">
-                <textarea class="comment_text" id="comment_text" placeholder="Leave a comment"></textarea>
-                <input type="file" name="asset_comment" id="asset_comment" accept=".jpg, .jpeg, .png">
-                <input class="submit" type="submit" name="comment_text" value="Comment" ng-click="comment()">
+    </div>
+    <ng-include src="'partials/pagination.html'"></ng-include>
+    <div class="form-group">
+        <h3>Add Comment</h3>
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <a href="#" class="thumbnail"><img class="img-responsive user-photo" src="{{ avatar2x }}"></a>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <div class="blog-write-comment">
+                    <textarea class="form-control" id="comment_text" rows="3" placeholder="Leave a comment..."></textarea>
+                    <button type="button" class="btn btn-default btn-lg" ng-click="upload()"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></button>
+                    <input type="file" name="asset_comment" id="asset_comment" accept=".jpg, .jpeg, .png">
+                    <button class="btn btn-primary btn-lg" type="submit" name="comment_text" ng-click="comment()">Comment</button>
+                </div>
             </div>
         </div>
     </div>
