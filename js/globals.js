@@ -4,7 +4,7 @@ angular.module('blogApp').run(function ($rootScope, $location, myApi) {
   var api_heroku = 'https://phones-store-api.herokuapp.com/';
   $rootScope.img_src = '../assets/img/logo200.png';
   $rootScope.avatar2x = 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png';
-  $rootScope.base_url = api_local;
+  $rootScope.base_url = api_heroku;
   
   $rootScope.make_listing = function (url, field) {
     myApi.get(url).then(function (response) {
