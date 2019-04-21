@@ -4,9 +4,6 @@
   "description": "blog",
   "license": "MIT",
   "main": "./server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "engines": {
     "node": "4.2.0",
     "npm": "2.14.7"
@@ -36,7 +33,7 @@
     "selenium": "webdriver-manager start"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "private": true,
   "bugs": {
     "url": "https://github.com/nguyenhuunghi/blog/issues"
