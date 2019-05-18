@@ -5,7 +5,7 @@ angular.module('blogServices', [])
     myApi.get = function (_url) {
       $('#container .fa .fa-spin').show();
       return $http({
-        url: $rootScope.base_url + _url,
+        url: $rootScope.api_url + _url,
         method: 'GET'
       }).then(function(response) {
         if (response && response.status === 200) {
@@ -18,7 +18,7 @@ angular.module('blogServices', [])
     };
     myApi.post = function (_url, data) {
       return $http({
-        url:$rootScope.base_url + _url,
+        url:$rootScope.api_url + _url,
         method: 'POST',
         data: data
       }).then(function(response) {
@@ -31,7 +31,7 @@ angular.module('blogServices', [])
     };
     myApi.put = function (_url, data) {
       return $http({
-        url: $rootScope.base_url + _url,
+        url: $rootScope.api_url + _url,
         method: 'PUT',
         data: data
       }).then(function(response) {
@@ -44,7 +44,7 @@ angular.module('blogServices', [])
     };
     myApi.delete = function (_url, data) {
       return $http({
-        url: $rootScope.base_url + _url,
+        url: $rootScope.api_url + _url,
         method: 'DELETE',
         params: data
       }).then(function(response) {

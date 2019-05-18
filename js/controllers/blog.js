@@ -9,7 +9,7 @@ angular.module('blogControllers', [])
   }])
 
   // entry blog 
-  .controller('blogViewCtrl', ['$scope', '$rootScope', '$routeParams', 'myApi', function ($scope, $rootScope, $routeParams, myApi) {
+  .controller('blogViewCtrl', ['$scope', '$rootScope', '$routeParams', 'myApi', function ($scope, $rootScope, $routeParams, myApi, $timeout) {
     $scope.blogId = $routeParams.id;
     $scope.blogEntry = [];
     $scope.limit = 10;
@@ -49,10 +49,11 @@ angular.module('blogControllers', [])
     }
     // edit a message
     $scope.editMessage = function (id) { 
-      $('#update_' + id).removeClass('hide'); 
+      $('#update_' + id).removeClass('hide');
+      $('#update_' + id).css({display: 'block'}); 
     }
     $scope.cancelComment = function (id) {
-      $('#update_' + id).addClass('hide'); 
+      $('#update_' + id).css({display: 'none'});
     }
     $scope.cancelComment = function (id) { 
       $('#update_' + id).hide(); 
@@ -74,12 +75,15 @@ angular.module('blogControllers', [])
       });
     }
     // assets of comment
-    $('#asset_comment').change(function(e) {
-      $rootScope.make_image('asset_comment'); // we must have a id of input
-      if ($rootScope.image) {
-        $('.blog-write-comment').append($rootScope.image);
-      }
-    }); 
+    $scope.upload_assets = function () {
+      $rootScope.upload();
+      $("#asset_comment").change(function(e) {
+        $rootScope.make_image('asset_comment'); // we must have a id of input
+        if ($rootScope.image) {
+          $('.blog-write-comment').append($rootScope.image);
+        }
+      });
+    }
     // submit comment
     $scope.comment = function () {
       var form_data = {
@@ -89,6 +93,7 @@ angular.module('blogControllers', [])
       myApi.post('comment/' + $scope.blogId, form_data).then(function (response) {
         if (response) {
           $('#comment_text').val('');
+          $('.blog-write-comment > img').remove();
           $rootScope.make_listing('comments/' + $scope.blogId);
         }
       });

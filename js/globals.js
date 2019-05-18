@@ -2,9 +2,13 @@
 angular.module('blogApp').run(function ($rootScope, $location, myApi) {
   var api_local = 'http://blog.api.local:5000/';
   var api_heroku = 'https://phones-store-api.herokuapp.com/';
+  var baseUrl = window.location;
+  if (!window.location.origin) {
+    baseUrl.origin = baseUrl.protocol + '//' + baseUrl.hostname + ':' + baseUrl.port;
+  }
+  $rootScope.api_url = api_local;
   $rootScope.img_src = '../assets/img/logo200.png';
   $rootScope.avatar2x = 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png';
-  $rootScope.base_url = api_heroku;
   
   $rootScope.make_listing = function (url, field) {
     myApi.get(url).then(function (response) {
@@ -15,7 +19,13 @@ angular.module('blogApp').run(function ($rootScope, $location, myApi) {
   };
 
   $rootScope.upload = function () {
-    $("input[type='file']").click();
+    document.querySelector("input[type='file']").click();
+    // var evObj = document.createEvent('MouseEvents');
+    // evObj.initMouseEvent('click', true, true, window);
+    // $("input[type='file']").click();
+    // setTimeout(function() {
+    //   document.getElementById('asset_comment').dispatchEvent(evObj);
+    // }, 100);
   }
     
   $rootScope.make_image = function(id) {

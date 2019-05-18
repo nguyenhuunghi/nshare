@@ -18,6 +18,13 @@ angular.module('blogApp', [
     .when('/blogPost/:id', {
       'templateUrl': '/partials/blog/blog_post.html',
       'controller': 'blogViewCtrl'
+    })
+    .otherwise('/', {
+      redirectTo: '/'
     });
-    $locationProvider.html5Mode(false).hashPrefix('');
+    $locationProvider.html5Mode({
+      enabled: false,
+      requireBase: false
+    });
+    $locationProvider.hashPrefix('');
 }]);
